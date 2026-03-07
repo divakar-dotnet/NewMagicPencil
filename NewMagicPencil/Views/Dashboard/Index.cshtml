@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="card shadow-sm">
+    <div class="card-header bg-white py-3">
+        <h4 class="mb-0">✨ Magic Pencil Dashboard</h4>
+    </div>
+    <div class="card-body p-4">
+        <h3>Hello, @User.Identity?.Name! 👋</h3>
+        <hr class="my-4" />
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div style="font-size:2rem;">📝</div>
+                        <h5 class="mt-2">Blogs</h5>
+                        <h2>@ViewBag.BlogCount</h2>
+                        <p class="text-muted">Total Blogs</p>
+                        <a asp-controller="Blog" asp-action="Index" class="btn btn-magic w-100">
+                            Manage Blogs
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <div style="font-size:2rem;">🗂️</div>
+                        <h5 class="mt-2">Portfolio</h5>
+                        <h2>@ViewBag.CategoryCount</h2>
+                        <p class="text-muted">Total Categories</p>
+                        <a asp-controller="Category" asp-action="Index" class="btn btn-magic w-100">
+                            Manage Portfolio
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

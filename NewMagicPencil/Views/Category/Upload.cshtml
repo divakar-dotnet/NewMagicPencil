@@ -1,0 +1,502 @@
+﻿@model List<NewMagicPencil.Models.CategoryImage>
+@{
+    ViewData["Title"] = "Add Images";
+    var categoryId = ViewBag.CategoryId;
+    var categoryName = ViewBag.CategoryName;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2><i class="bi bi-images"></i> Add Images</h2>
+        <p class="text-muted mb-0">Category: <strong>@categoryName</strong></p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-dark">
+        <i class="bi bi-arrow-left"></i> Back to Categories
+    </a>
+</div>
+
+@* ── UPLOAD FORM ─────────────────────────────────────────────── *@
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-white fw-semibold">
+        <i class="bi bi-cloud-upload"></i> Upload New Images
+    </div>
+    <div class="card-body p-4">
+        <form id="uploadForm" asp-action="Upload" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="categoryId" value="@categoryId" />
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">
+                    Upload Images <span class="text-danger">*</span>
+                </label>
+                <input type="file" id="imageInput" name="images"
+                       class="form-control" accept=".jpg,.jpeg,.png" multiple />
+                <div class="form-text">
+                    Allowed: JPG, JPEG, PNG &nbsp;|&nbsp; Maximum: <strong>15 images</strong>
+                </div>
+                <div id="fileError" class="text-danger small mt-1" style="display:none;"></div>
+            </div>
+
+            <div id="previewContainer" class="row g-3 mb-3" style="display:none;"></div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Description</label>
+                <textarea name="description" class="form-control" rows="3"
+                          placeholder="Write a description, add hashtags like #portfolio #design ..."></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-semibold">
+                    Status <span class="text-danger">*</span>
+                </label>
+                <select name="status" class="form-select" style="max-width:200px;">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                </select>
+            </div>
+
+            <button type="submit" id="saveBtn" class="btn btn-success px-4" disabled>
+                <span class="btn-text"><i class="bi bi-save"></i> Save Images</span>
+                <span class="spinner-border spinner-border-sm d-none ms-1"></span>
+            </button>
+        </form>
+    </div>
+</div>
+
+@* ── UPLOADED IMAGES GRID ─────────────────────────────────────── *@
+@if (Model != null && Model.Count > 0)
+{
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white fw-semibold">
+            <i class="bi bi-grid-3x3-gap"></i> Uploaded Images
+            <span class="badge bg-primary ms-2">@Model.Count</span>
+            <small class="text-muted ms-2" style="font-weight:normal;">
+                <i class="bi bi-info-circle"></i> Click any image to view full size
+            </small>
+        </div>
+        <div class="card-body p-4">
+            <div class="row g-3" id="savedImagesGrid">
+                @foreach (var img in Model)
+                {
+                    <div class="col-md-3 col-sm-4 col-6" id="saved-card-@img.Id">
+                        <div class="card h-100 shadow-sm">
+
+                            @* Image — click to open lightbox *@
+                            <img src="@img.ImageUrl"
+                                 class="card-img-top"
+                                 style="height:180px; object-fit:cover; cursor:pointer;"
+                                 alt="Portfolio Image"
+                                 onclick="openLightbox('@img.ImageUrl')"
+                                 onerror="this.src='/images/no-image.png'; this.onerror=null;" />
+
+                            <div class="card-body p-2">
+                                <p class="small text-muted mb-0 img-desc" style="min-height:36px;">
+                                    @(string.IsNullOrEmpty(img.Description)
+                                                                ? "No description"
+                                                                : img.Description.Length > 60
+                                                                ? img.Description.Substring(0, 60) + "..."
+                                                                : img.Description)
+                                </p>
+                                <p class="small text-muted mt-1 mb-0">
+                                    @img.UploadedOn.ToLocalTime().ToString("dd MMM yyyy")
+                                </p>
+                            </div>
+
+                            @* 3 action buttons — Edit, Replace, Delete *@
+                            <div class="card-footer bg-white p-2">
+                                <div class="d-flex gap-1 justify-content-between">
+
+                                    @* EDIT *@
+                                    <button class="btn btn-sm btn-outline-success flex-fill"
+                                            onclick="openEditModal(@img.Id, '@Html.Raw(Html.Encode(img.Description ?? ""))')"
+                                            title="Edit Description">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+
+                                    @* REPLACE *@
+                                    <label class="btn btn-sm btn-outline-warning flex-fill mb-0"
+                                           style="cursor:pointer;" title="Replace Image">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                        <input type="file" class="d-none replace-input"
+                                               accept=".jpg,.jpeg,.png"
+                                               data-id="@img.Id"
+                                               data-categoryid="@categoryId" />
+                                    </label>
+
+                                    @* DELETE *@
+                                    <button class="btn btn-sm btn-outline-danger flex-fill"
+                                            onclick="deleteImage(@img.Id, @categoryId)"
+                                            title="Delete Image">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        <i class="bi bi-info-circle"></i>
+        No images uploaded yet. Use the form above to upload.
+    </div>
+}
+
+@* ── EDIT DESCRIPTION MODAL ───────────────────────────────────── *@
+<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="bi bi-pencil-square"></i> Edit Description
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editImageId" value="" />
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Description</label>
+                    <textarea id="editDescription" class="form-control" rows="4"
+                              placeholder="Enter description, hashtags like #portfolio #design ..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-success" onclick="saveEditDescription()">
+                    <span id="editSaveText"><i class="bi bi-save"></i> Save</span>
+                    <span id="editSaveSpinner" class="spinner-border spinner-border-sm d-none ms-1"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* ── LIGHTBOX MODAL ───────────────────────────────────────────── *@
+<div id="lightboxModal" style="
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.92);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;">
+
+    <button onclick="closeLightbox()" style="
+        position:fixed; top:20px; right:30px;
+        background:none; border:none; color:white;
+        font-size:2.5rem; cursor:pointer; z-index:10000; line-height:1;">
+        &times;
+    </button>
+
+    <div style="max-width:90vw; max-height:90vh; display:flex;
+                align-items:center; justify-content:center;">
+        <img id="lightboxImg" src="" alt="Full Image"
+             style="max-width:90vw; max-height:85vh; object-fit:contain;
+                    border-radius:8px; box-shadow:0 0 40px rgba(255,255,255,0.1);" />
+    </div>
+
+    <div style="margin-top:12px;">
+        <a id="lightboxDownload" href="" download
+           style="color:#aaa; font-size:0.85rem; text-decoration:none;">
+            <i class="bi bi-download"></i> Download Image
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const MAX = 15;
+        const EXTS = ['jpg', 'jpeg', 'png'];
+        let selectedFiles = [];
+
+        // ── FILE SELECTION & PREVIEW ──────────────────────────────
+        document.getElementById('imageInput').addEventListener('change', function () {
+            const files = Array.from(this.files);
+            const errorDiv = document.getElementById('fileError');
+            const preview = document.getElementById('previewContainer');
+            const saveBtn = document.getElementById('saveBtn');
+
+            errorDiv.style.display = 'none';
+            preview.innerHTML = '';
+            preview.style.display = 'none';
+            selectedFiles = [];
+            saveBtn.disabled = true;
+
+            if (!files.length) return;
+
+            if (files.length > MAX) {
+                errorDiv.textContent = `Max ${MAX} images allowed. You selected ${files.length}.`;
+                errorDiv.style.display = 'block';
+                this.value = '';
+                return;
+            }
+
+            for (const f of files) {
+                const ext = f.name.split('.').pop().toLowerCase();
+                if (!EXTS.includes(ext)) {
+                    errorDiv.textContent = `"${f.name}" not allowed. Only JPG, JPEG, PNG accepted.`;
+                    errorDiv.style.display = 'block';
+                    this.value = '';
+                    return;
+                }
+            }
+
+            selectedFiles = Array.from(files);
+            preview.style.display = 'flex';
+            preview.style.flexWrap = 'wrap';
+
+            files.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-3 col-sm-4 col-6';
+                    col.id = 'preview-card-' + index;
+                    col.innerHTML = `
+                        <div class="card h-100 shadow-sm">
+                            <img src="${e.target.result}"
+                                 class="card-img-top"
+                                 style="height:160px; object-fit:cover;" />
+                            <div class="card-body p-2">
+                                <small class="text-muted text-break">${file.name}</small>
+                            </div>
+                            <div class="card-footer bg-white d-flex justify-content-between p-2">
+                                <label class="btn btn-sm btn-outline-warning mb-0" style="cursor:pointer;">
+                                    <i class="bi bi-arrow-repeat"></i>
+                                    <input type="file" class="d-none preview-replace-input"
+                                           accept=".jpg,.jpeg,.png" data-index="${index}" />
+                                </label>
+                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                        onclick="removePreview(${index})">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>`;
+                    preview.appendChild(col);
+
+                    col.querySelector('.preview-replace-input').addEventListener('change', function () {
+                        const newFile = this.files[0];
+                        if (!newFile) return;
+                        if (!EXTS.includes(newFile.name.split('.').pop().toLowerCase())) {
+                            Swal.fire({ icon: 'error', title: 'Invalid Format',
+                                text: 'Only JPG, JPEG, PNG allowed.', confirmButtonColor: '#6c5ce7' });
+                            return;
+                        }
+                        const idx = parseInt(this.dataset.index);
+                        selectedFiles[idx] = newFile;
+                        const r = new FileReader();
+                        r.onload = ev => {
+                            document.querySelector(`#preview-card-${idx} img`).src = ev.target.result;
+                            document.querySelector(`#preview-card-${idx} .text-muted`).textContent = newFile.name;
+                        };
+                        r.readAsDataURL(newFile);
+                        syncInput();
+                    });
+                };
+                reader.readAsDataURL(file);
+            });
+
+            saveBtn.disabled = false;
+            syncInput();
+        });
+
+        function removePreview(index) {
+            selectedFiles.splice(index, 1);
+            document.getElementById('preview-card-' + index)?.remove();
+            if (!selectedFiles.length) {
+                document.getElementById('previewContainer').style.display = 'none';
+                document.getElementById('saveBtn').disabled = true;
+                document.getElementById('imageInput').value = '';
+            } else syncInput();
+        }
+
+        function syncInput() {
+            try {
+                const dt = new DataTransfer();
+                selectedFiles.forEach(f => f && dt.items.add(f));
+                document.getElementById('imageInput').files = dt.files;
+            } catch (e) { }
+        }
+
+        // ── SAVE BUTTON LOADING STATE ─────────────────────────────
+        document.getElementById('uploadForm').addEventListener('submit', function () {
+            if (!selectedFiles.length) return;
+            const btn = document.getElementById('saveBtn');
+            btn.querySelector('.btn-text').innerHTML = '<i class="bi bi-hourglass-split"></i> Saving...';
+            btn.querySelector('.spinner-border').classList.remove('d-none');
+            btn.disabled = true;
+        });
+
+        // ── EDIT DESCRIPTION ──────────────────────────────────────
+        function openEditModal(id, description) {
+            document.getElementById('editImageId').value = id;
+            document.getElementById('editDescription').value = description;
+            new bootstrap.Modal(document.getElementById('editModal')).show();
+        }
+
+        async function saveEditDescription() {
+            const id = document.getElementById('editImageId').value;
+            const description = document.getElementById('editDescription').value.trim();
+
+            const saveText = document.getElementById('editSaveText');
+            const saveSpinner = document.getElementById('editSaveSpinner');
+            saveText.classList.add('d-none');
+            saveSpinner.classList.remove('d-none');
+
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+            const formData = new FormData();
+            formData.append('id', id);
+            formData.append('description', description);
+            formData.append('__RequestVerificationToken', token);
+
+            const res = await fetch('/Category/EditImage', { method: 'POST', body: formData });
+            const data = await res.json();
+
+            saveText.classList.remove('d-none');
+            saveSpinner.classList.add('d-none');
+
+            if (data.success) {
+                // Update description text in the card without reload
+                const card = document.getElementById('saved-card-' + id);
+                if (card) {
+                    const descEl = card.querySelector('.img-desc');
+                    if (descEl) {
+                        const display = description.length === 0
+                            ? 'No description'
+                            : description.length > 60
+                                ? description.substring(0, 60) + '...'
+                                : description;
+                        descEl.textContent = display;
+                    }
+                }
+                bootstrap.Modal.getInstance(document.getElementById('editModal')).hide();
+                Swal.fire({ icon: 'success', title: 'Updated!', text: data.message,
+                    timer: 2000, showConfirmButton: false, toast: true, position: 'top-end' });
+            } else {
+                Swal.fire({ icon: 'error', title: 'Error', text: data.message,
+                    confirmButtonColor: '#6c5ce7' });
+            }
+        }
+
+        // ── DELETE SAVED IMAGE ────────────────────────────────────
+        function deleteImage(id, categoryId) {
+            Swal.fire({
+                title: 'Delete Image?',
+                text: 'This will permanently delete the image.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, Delete!'
+            }).then(async result => {
+                if (!result.isConfirmed) return;
+                Swal.fire({ title: 'Deleting...', allowOutsideClick: false,
+                    didOpen: () => Swal.showLoading() });
+
+                const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+                const res = await fetch('/Category/DeleteImage', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'RequestVerificationToken': token
+                    },
+                    body: `id=${id}&categoryId=${categoryId}`
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    document.getElementById('saved-card-' + id)?.remove();
+                    const badge = document.querySelector('.card-header .badge.bg-primary');
+                    if (badge) {
+                        const count = parseInt(badge.textContent) - 1;
+                        if (count <= 0) location.reload();
+                        else badge.textContent = count;
+                    }
+                    Swal.fire({ icon: 'success', title: 'Deleted!', text: data.message,
+                        timer: 2000, showConfirmButton: false, toast: true, position: 'top-end' });
+                } else {
+                    Swal.fire({ icon: 'error', title: 'Error', text: data.message,
+                        confirmButtonColor: '#6c5ce7' });
+                }
+            });
+        }
+
+        // ── REPLACE SAVED IMAGE ───────────────────────────────────
+        document.addEventListener('change', async function (e) {
+            if (!e.target.classList.contains('replace-input')) return;
+
+            const file = e.target.files[0];
+            if (!file) return;
+
+            if (!EXTS.includes(file.name.split('.').pop().toLowerCase())) {
+                Swal.fire({ icon: 'error', title: 'Invalid Format',
+                    text: 'Only JPG, JPEG, PNG allowed.', confirmButtonColor: '#6c5ce7' });
+                e.target.value = '';
+                return;
+            }
+
+            const id = e.target.dataset.id;
+            const categoryId = e.target.dataset.categoryid;
+
+            Swal.fire({ title: 'Replacing...', allowOutsideClick: false,
+                didOpen: () => Swal.showLoading() });
+
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+            const formData = new FormData();
+            formData.append('id', id);
+            formData.append('categoryId', categoryId);
+            formData.append('newImage', file);
+            formData.append('__RequestVerificationToken', token);
+
+            const res = await fetch('/Category/ReplaceImage', { method: 'POST', body: formData });
+            const data = await res.json();
+
+            if (data.success) {
+                const card = document.getElementById('saved-card-' + id);
+                if (card) {
+                    const reader = new FileReader();
+                    reader.onload = ev => card.querySelector('img').src = ev.target.result;
+                    reader.readAsDataURL(file);
+                }
+                Swal.fire({ icon: 'success', title: 'Replaced!', text: data.message,
+                    timer: 2000, showConfirmButton: false, toast: true, position: 'top-end' });
+            } else {
+                Swal.fire({ icon: 'error', title: 'Error', text: data.message,
+                    confirmButtonColor: '#6c5ce7' });
+            }
+            e.target.value = '';
+        });
+
+        // ── LIGHTBOX ──────────────────────────────────────────────
+        function openLightbox(src) {
+            const modal = document.getElementById('lightboxModal');
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxDownload').href = src;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightboxModal').style.display = 'none';
+            document.getElementById('lightboxImg').src = '';
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('lightboxModal').addEventListener('click', function (e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+}
