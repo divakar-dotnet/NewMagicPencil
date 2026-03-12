@@ -1,6 +1,12 @@
 C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\NewMagicPencil.exe
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\Publish\web.config
 C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\appsettings.Development.json
 C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\appsettings.json
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\Publish\appsettings.Development.json
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\Publish\appsettings.json
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\Publish\NewMagicPencil.deps.json
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\Publish\NewMagicPencil.runtimeconfig.json
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\Publish\NewMagicPencil.staticwebassets.endpoints.json
 C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\NewMagicPencil.dll
 C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\NewMagicPencil.runtimeconfig.json
 C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\Publish\NewMagicPencil.pdb

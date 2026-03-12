@@ -23,6 +23,12 @@ namespace NewMagicPencil.Controllers
             try { ViewBag.CategoryCount = await _db.Categories.CountAsync(); }
             catch { ViewBag.CategoryCount = 0; }
 
+            try { ViewBag.GalleryCount = await _db.GalleryImages.Where(g => g.IsLiked).CountAsync(); }
+            catch { ViewBag.GalleryCount = 0; }
+
+            ViewBag.UserEmail = User.Identity?.Name ?? "Admin";
+            //throw new Exception("Test error from Dashboard page");
+
             return View();
         }
     }

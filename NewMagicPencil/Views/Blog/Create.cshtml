@@ -10,56 +10,48 @@
 
 <div class="card shadow-sm border-0">
     <div class="card-body p-4">
-        <form id="createForm" asp-action="Create" method="post" enctype="multipart/form-data">
+        <form id="createForm" asp-action="Create" method="post" enctype="multipart/form-data" novalidate>
             @Html.AntiForgeryToken()
 
+            <!-- TITLE -->
             <div class="mb-3">
                 <label class="form-label fw-semibold">
                     Title <span class="text-danger">*</span>
                 </label>
-                <input asp-for="Title" class="form-control" placeholder="Enter blog title" />
-                <span asp-validation-for="Title" class="text-danger small"></span>
+                <input asp-for="Title" id="titleInput" class="form-control" placeholder="Enter blog title" />
+                <div class="field-error" id="titleError"></div>
             </div>
 
+            <!-- SHORT DESCRIPTION -->
             <div class="mb-3">
                 <label class="form-label fw-semibold">
                     Short Description <span class="text-danger">*</span>
                 </label>
-                <textarea asp-for="ShortDescription" class="form-control" rows="3"
+                <textarea asp-for="ShortDescription" id="shortDescInput" class="form-control" rows="3"
                           placeholder="Enter a brief description..."></textarea>
-                <span asp-validation-for="ShortDescription" class="text-danger small"></span>
+                <div class="field-error" id="shortDescError"></div>
             </div>
 
+            <!-- CONTENT (QUILL) -->
             <div class="mb-3">
                 <label class="form-label fw-semibold">
                     Content <span class="text-danger">*</span>
                 </label>
-
-                @* Quill editor container *@
-                <div id="quillEditor" style="
-                    min-height: 250px;
-                    border: 1px solid #dee2e6;
-                    border-top: none;
-                    border-radius: 0 0 6px 6px;
-                    background: #fff;
-                    font-size: 1rem;">
-                </div>
-
-                @* Hidden input — Quill HTML goes here before submit *@
+                <div id="quillEditor" style="min-height: 250px; background: #fff; font-size: 1rem;"></div>
                 <textarea id="Content" name="Content" style="display:none;"></textarea>
-                <span asp-validation-for="Content" class="text-danger small"></span>
+                <div class="field-error" id="contentError"></div>
             </div>
 
+            <!-- IMAGE -->
             <div class="mb-3">
                 <label class="form-label fw-semibold">Upload Image</label>
-                <input type="file" asp-for="Image" class="form-control"
-                       accept=".jpg,.jpeg,.png,.gif,.webp" />
+                <input type="file" asp-for="Image" class="form-control" accept=".jpg,.jpeg,.png,.gif,.webp" />
             </div>
 
+            <!-- TAGS -->
             <div class="mb-4">
                 <label class="form-label fw-semibold">Tags</label>
-                <input asp-for="Hashtags" class="form-control"
-                       placeholder="#technology #coding" />
+                <input asp-for="Hashtags" class="form-control" placeholder="#technology #coding" />
             </div>
 
             <button type="submit" id="saveBtn" class="btn btn-success px-4">
@@ -71,13 +63,23 @@
     </div>
 </div>
 
-@* Quill CSS *@
 <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet" />
 
-@* Hide Quill branding tooltip *@
 <style>
-    .ql-tooltip {
-        display: none !important;
+    .field-error {
+        color: #d63031;
+        font-size: 0.8rem;
+        margin-top: 4px;
+        display: none;
+    }
+
+        .field-error.show {
+            display: block !important;
+        }
+
+    .border-invalid {
+        border-color: #d63031 !important;
+        box-shadow: none !important;
     }
 
     .ql-toolbar.ql-snow {
@@ -93,10 +95,18 @@
         font-size: 1rem;
     }
 
+        .ql-container.ql-snow.border-invalid {
+            border-color: #d63031 !important;
+        }
+
     .ql-editor {
         min-height: 250px;
     }
-    /* Hide "powered by quill" if it ever shows */
+
+    .ql-tooltip {
+        display: none !important;
+    }
+
     a[href*="quilljs"] {
         display: none !important;
     }
@@ -105,7 +115,7 @@
 @section Scripts {
     <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
     <script>
-        // ── INIT QUILL ─────────────────────────────────────────────
+        // ── INIT QUILL ──────────────────────────────────────────
         const quill = new Quill('#quillEditor', {
             theme: 'snow',
             placeholder: 'Write your blog content here...',
@@ -124,24 +134,84 @@
             }
         });
 
-        // ── BEFORE SUBMIT — copy Quill HTML into hidden textarea ───
+        // ── FORM SUBMIT ─────────────────────────────────────────
         document.getElementById('createForm').addEventListener('submit', function (e) {
-            const content = quill.root.innerHTML;
 
-            // Prevent submit if content is empty
-            if (quill.getText().trim().length === 0) {
+            var title     = document.getElementById('titleInput').value.trim();
+            var shortDesc = document.getElementById('shortDescInput').value.trim();
+            var quillText = quill.getText().trim();
+
+            var titleEl     = document.getElementById('titleInput');
+            var shortDescEl = document.getElementById('shortDescInput');
+            var quillCont   = document.querySelector('.ql-container');
+
+            var titleErr     = document.getElementById('titleError');
+            var shortDescErr = document.getElementById('shortDescError');
+            var contentErr   = document.getElementById('contentError');
+
+            var valid = true;
+
+            // Reset all errors
+            titleErr.classList.remove('show');
+            shortDescErr.classList.remove('show');
+            contentErr.classList.remove('show');
+            titleEl.classList.remove('border-invalid');
+            shortDescEl.classList.remove('border-invalid');
+            if (quillCont) quillCont.classList.remove('border-invalid');
+
+            // Validate Title
+            if (!title) {
+                titleErr.innerHTML = '<i class="bi bi-exclamation-circle"></i> Title is required.';
+                titleErr.classList.add('show');
+                titleEl.classList.add('border-invalid');
+                valid = false;
+            }
+
+            // Validate Short Description
+            if (!shortDesc) {
+                shortDescErr.innerHTML = '<i class="bi bi-exclamation-circle"></i> Short Description is required.';
+                shortDescErr.classList.add('show');
+                shortDescEl.classList.add('border-invalid');
+                valid = false;
+            }
+
+            // Validate Content — Quill returns '\n' (length 1) when empty
+            if (quillText.length <= 1) {
+                contentErr.innerHTML = '<i class="bi bi-exclamation-circle"></i> Content is required.';
+                contentErr.classList.add('show');
+                if (quillCont) quillCont.classList.add('border-invalid');
+                valid = false;
+            }
+
+            if (!valid) {
                 e.preventDefault();
-                document.querySelector('[data-valmsg-for="Content"]').textContent = 'Content is required.';
                 return;
             }
 
-            document.getElementById('Content').value = content;
+            // All valid — sync Quill HTML then show spinner
+            document.getElementById('Content').value = quill.root.innerHTML;
 
-            // Loading state
-            const btn = document.getElementById('saveBtn');
+            var btn = document.getElementById('saveBtn');
             btn.querySelector('.btn-text').innerHTML = '<i class="bi bi-hourglass-split"></i> Saving...';
             btn.querySelector('.spinner-border').classList.remove('d-none');
             btn.disabled = true;
+        });
+
+        // ── CLEAR ERRORS ON INPUT ───────────────────────────────
+        document.getElementById('titleInput').addEventListener('input', function () {
+            document.getElementById('titleError').classList.remove('show');
+            this.classList.remove('border-invalid');
+        });
+
+        document.getElementById('shortDescInput').addEventListener('input', function () {
+            document.getElementById('shortDescError').classList.remove('show');
+            this.classList.remove('border-invalid');
+        });
+
+        quill.on('text-change', function () {
+            document.getElementById('contentError').classList.remove('show');
+            var qc = document.querySelector('.ql-container');
+            if (qc) qc.classList.remove('border-invalid');
         });
     </script>
 }

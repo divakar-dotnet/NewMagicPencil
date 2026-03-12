@@ -31,14 +31,21 @@
                         <td><strong>@cat.CategoryName</strong></td>
                         <td>@cat.CreatedOn.ToString("dd MMM yyyy")</td>
                         <td class="text-center">
-                            @if (cat.Status == "Active")
-                            {
-                                <span class="badge bg-success px-3 py-2">Active</span>
-                            }
-                            else
-                            {
-                                <span class="badge bg-secondary px-3 py-2">Inactive</span>
-                            }
+                            <div class="form-check form-switch d-flex justify-content-center align-items-center gap-2 mb-0">
+                                <input class="form-check-input status-switch"
+                                       type="checkbox"
+                                       role="switch"
+                                       id="switch-@cat.Id"
+                                       data-id="@cat.Id"
+                                       @(cat.Status == "Active" ? "checked" : "")
+                                       style="width:2.5em; height:1.3em; cursor:pointer;" />
+                                <label class="form-check-label small fw-semibold"
+                                       id="label-@cat.Id"
+                                       for="switch-@cat.Id"
+                                       style="min-width:52px; color:@(cat.Status == "Active" ? "#198754" : "#6c757d");">
+                                    @cat.Status
+                                </label>
+                            </div>
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
@@ -46,14 +53,14 @@
                                    class="btn btn-sm btn-outline-warning">
                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
-                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                @* <button type="button" class="btn btn-sm btn-outline-danger"
                                         onclick="confirmDelete(@cat.Id, '@Html.Raw(Html.Encode(cat.CategoryName))')">
                                     <i class="bi bi-trash"></i> Delete
-                                </button>
-                                <button type="button" class="btn btn-sm btn-outline-info"
-                                        onclick="window.location.href='/Category/Upload?categoryId=@cat.Id'">
-                                    <i class="bi bi-image"></i> Add / View Image
-                                </button>
+                                </button> *@
+                                <a href="/Category/Upload?categoryId=@cat.Id"
+                                   class="btn btn-sm btn-outline-info">
+                                    <i class="bi bi-image"></i> Add / View
+                                </a>
                             </div>
                             <form id="delete-form-@cat.Id" asp-action="Delete"
                                   method="post" style="display:none;">
@@ -71,50 +78,67 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            const table = $('#categoryTable').DataTable({
-                "order": [[2, "asc"]], // sort by Created On ascending
-                "language": {
-                    "search": "_INPUT_",
-                    "searchPlaceholder": "Search categories..."
-                },
-                "columnDefs": [
-                    {
-                        // S.No column — auto row number, not sortable
-                        "targets": 0,
-                        "orderable": false,
-                        "render": function (data, type, row, meta) {
-                            return meta.row + 1;
-                        }
-                    }
-                ]
+            var table = $('#categoryTable').DataTable({
+                "order": [[2, "asc"]],
+                "language": { "search": "_INPUT_", "searchPlaceholder": "Search categories..." },
+                "columnDefs": [{
+                    "targets": 0,
+                    "orderable": false,
+                    "render": function (data, type, row, meta) { return meta.row + 1; }
+                }]
             });
-
-            // Re-render S.No on page change
             table.on('draw', function () {
                 table.column(0, { search: 'applied', order: 'applied' })
-                    .nodes()
-                    .each(function (cell, i) {
-                        cell.innerHTML = i + 1;
+                    .nodes().each(function (cell, i) { cell.innerHTML = i + 1; });
+            });
+        });
+
+        document.querySelectorAll('.status-switch').forEach(function (sw) {
+            sw.addEventListener('change', function () {
+                var id = this.dataset.id;
+                var checked = this.checked;
+                var switchEl = this;
+                switchEl.disabled = true;
+
+                var token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+                var formData = new FormData();
+                formData.append('id', id);
+                formData.append('__RequestVerificationToken', token);
+
+                fetch('/Category/ToggleStatus', { method: 'POST', body: formData })
+                    .then(function (res) { return res.json(); })
+                    .then(function (data) {
+                        if (data.success) {
+                            var label = document.getElementById('label-' + id);
+                            label.textContent = data.newStatus;
+                            label.style.color = data.newStatus === 'Active' ? '#198754' : '#6c757d';
+                        } else {
+                            switchEl.checked = !checked;
+                            Swal.fire({ icon: 'error', title: 'Error', text: 'Could not update status.' });
+                        }
+                        switchEl.disabled = false;
+                    })
+                    .catch(function () {
+                        switchEl.checked = !checked;
+                        Swal.fire({ icon: 'error', title: 'Error', text: 'Network error.' });
+                        switchEl.disabled = false;
                     });
             });
         });
 
         function confirmDelete(id, name) {
             Swal.fire({
-                title: 'Deactivate Category?',
-                html: "Category <strong>'" + name + "'</strong> will be marked as <strong>Inactive</strong>.<br/><small class='text-muted'>No data will be permanently deleted.</small>",
+                title: 'Permanently Delete?',
+                html: 'Delete <strong>' + name + '</strong>?<br/><small class="text-danger">All images will also be deleted permanently.</small>',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#6c757d',
-                confirmButtonText: 'Yes, Deactivate!'
-            }).then((result) => {
+                confirmButtonText: 'Yes, Delete!'
+            }).then(function (result) {
                 if (result.isConfirmed) {
-                    Swal.fire({
-                        title: 'Processing...',
-                        allowOutsideClick: false,
-                        didOpen: () => Swal.showLoading()
-                    });
+                    Swal.fire({ title: 'Deleting...', allowOutsideClick: false,
+                        didOpen: function () { Swal.showLoading(); } });
                     document.getElementById('delete-form-' + id).submit();
                 }
             });

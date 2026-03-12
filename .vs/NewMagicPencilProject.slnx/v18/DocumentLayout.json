@@ -1,0 +1,744 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\gallerymodule\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\gallerymodule\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\error\\logs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\error\\logs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\error\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\error\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\category\\upload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\category\\upload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\category\\gallery.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\category\\gallery.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\category\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\blog\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\blog\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\blog\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\blog\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\blog\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\blog\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\blog\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\blog\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\models\\galleryimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\models\\galleryimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\models\\errorlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\models\\errorlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\models\\categoryimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\models\\categoryimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\models\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\models\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\models\\adminuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\models\\adminuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\middleware\\globalexceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\middleware\\globalexceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\controllers\\gallerymodulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\controllers\\gallerymodulecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\controllers\\errorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\controllers\\errorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\views\\category\\uploadblocked.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\views\\category\\uploadblocked.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\wwwroot\\js\\upload.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\wwwroot\\js\\upload.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|c:\\users\\dell\\desktop\\duffl\\newmagicpencilproject\\newmagicpencil\\migrations\\20260307115953_addgalleryimages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4A3D5AC5-3828-F7CD-B213-B6A627E85DAD}|NewMagicPencil\\NewMagicPencil.csproj|solutionrelative:newmagicpencil\\migrations\\20260307115953_addgalleryimages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a80febb4-e7e0-4147-b476-21aaf2453969}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\GalleryModule\\Index.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\GalleryModule\\Index.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\GalleryModule\\Index.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\GalleryModule\\Index.cshtml",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAQwJYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T12:19:39.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAQwEQAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T12:20:15.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\appsettings.json",
+              "RelativeDocumentMoniker": "NewMagicPencil\\appsettings.json",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\appsettings.json",
+              "RelativeToolTip": "NewMagicPencil\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-07T10:12:19.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Program.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Program.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Program.cs",
+              "RelativeToolTip": "NewMagicPencil\\Program.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAQwCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T10:12:26.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\Index.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Category\\Index.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\Index.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Category\\Index.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAQwIgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T10:10:10.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\Create.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Category\\Create.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\Create.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Category\\Create.cshtml",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAswE8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T10:09:56.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "NewMagicPencil\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T06:26:38.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Logs.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Error\\Logs.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Error\\Logs.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Error\\Logs.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Error\\Logs.cshtml",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAQwJAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-12T06:39:00.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Error\\Index.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Error\\Index.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Error\\Index.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Error\\Index.cshtml",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAswJIAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-12T06:38:28.163Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Dashboard\\Index.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Dashboard\\Index.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Dashboard\\Index.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Dashboard\\Index.cshtml",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwDMAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T10:10:26.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Upload.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\Upload.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Category\\Upload.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\Upload.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Category\\Upload.cshtml",
+              "ViewState": "AgIAAAABAAAAAAAAAAAQwCABAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T05:57:48.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Gallery.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\Gallery.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Category\\Gallery.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\Gallery.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Category\\Gallery.cshtml",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAQwMsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T12:07:36.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\Edit.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Category\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\Edit.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Category\\Edit.cshtml",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwDAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T10:10:03.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Blog\\Index.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Blog\\Index.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Blog\\Index.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Blog\\Index.cshtml",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAQwHcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T10:09:46.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Blog\\Edit.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Blog\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Blog\\Edit.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Blog\\Edit.cshtml",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAQwJQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T10:09:38.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Blog\\Details.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Blog\\Details.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Blog\\Details.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Blog\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T10:09:30.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Blog\\Create.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Blog\\Create.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Blog\\Create.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Blog\\Create.cshtml",
+              "ViewState": "AgIAALgAAAAAAAAAAAAQwNgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T10:09:23.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAMUBAAAAAAAAAAAQwOUBAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T08:07:53.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Services\\JwtService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Services\\JwtService.cs",
+              "RelativeToolTip": "NewMagicPencil\\Services\\JwtService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAiwCMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T10:09:01.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Services\\EmailService.cs",
+              "RelativeToolTip": "NewMagicPencil\\Services\\EmailService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAqwCcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T10:08:52.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "NewMagicPencil\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T09:11:06.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "GalleryImage.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\GalleryImage.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Models\\GalleryImage.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\GalleryImage.cs",
+              "RelativeToolTip": "NewMagicPencil\\Models\\GalleryImage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T11:58:45.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Models\\Category.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\Category.cs",
+              "RelativeToolTip": "NewMagicPencil\\Models\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T10:07:59.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Blog.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\Blog.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Models\\Blog.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\Blog.cs",
+              "RelativeToolTip": "NewMagicPencil\\Models\\Blog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T10:07:50.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AdminUser.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\AdminUser.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Models\\AdminUser.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\AdminUser.cs",
+              "RelativeToolTip": "NewMagicPencil\\Models\\AdminUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T10:07:43.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "GlobalExceptionMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Middleware\\GlobalExceptionMiddleware.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Middleware\\GlobalExceptionMiddleware.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Middleware\\GlobalExceptionMiddleware.cs",
+              "RelativeToolTip": "NewMagicPencil\\Middleware\\GlobalExceptionMiddleware.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAAAD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T06:34:50.275Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "NewMagicPencil\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T10:07:31.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "CategoryImage.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\CategoryImage.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Models\\CategoryImage.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\CategoryImage.cs",
+              "RelativeToolTip": "NewMagicPencil\\Models\\CategoryImage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T08:20:31.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ErrorLog.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\ErrorLog.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Models\\ErrorLog.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Models\\ErrorLog.cs",
+              "RelativeToolTip": "NewMagicPencil\\Models\\ErrorLog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T06:32:14.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "NewMagicPencil\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAADwvxUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T09:10:08.205Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ErrorController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\ErrorController.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Controllers\\ErrorController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\ErrorController.cs",
+              "RelativeToolTip": "NewMagicPencil\\Controllers\\ErrorController.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAqwEwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T06:35:23.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "NewMagicPencil\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwCIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T10:07:21.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "BlogController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\BlogController.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Controllers\\BlogController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\BlogController.cs",
+              "RelativeToolTip": "NewMagicPencil\\Controllers\\BlogController.cs",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAkwJ4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-10T06:46:22.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "GalleryModuleController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\GalleryModuleController.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Controllers\\GalleryModuleController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\GalleryModuleController.cs",
+              "RelativeToolTip": "NewMagicPencil\\Controllers\\GalleryModuleController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T12:19:14.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "NewMagicPencil\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAswI8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T08:13:49.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Properties\\launchSettings.json",
+              "RelativeToolTip": "NewMagicPencil\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvyYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-07T10:06:44.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-10T06:50:10.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-10T06:50:02.761Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-10T06:49:59.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "UploadBlocked.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\UploadBlocked.cshtml",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Views\\Category\\UploadBlocked.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Views\\Category\\UploadBlocked.cshtml",
+              "RelativeToolTip": "NewMagicPencil\\Views\\Category\\UploadBlocked.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAC0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-07T11:35:26.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "upload.js",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\wwwroot\\js\\upload.js",
+              "RelativeDocumentMoniker": "NewMagicPencil\\wwwroot\\js\\upload.js",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\wwwroot\\js\\upload.js",
+              "RelativeToolTip": "NewMagicPencil\\wwwroot\\js\\upload.js",
+              "ViewState": "AgIAAEYBAAAAAAAAAAAqwLsBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-07T12:06:37.258Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "20260307115953_AddGalleryImages.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Migrations\\20260307115953_AddGalleryImages.cs",
+              "RelativeDocumentMoniker": "NewMagicPencil\\Migrations\\20260307115953_AddGalleryImages.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\DUFFL\\NewMagicPencilProject\\NewMagicPencil\\Migrations\\20260307115953_AddGalleryImages.cs",
+              "RelativeToolTip": "NewMagicPencil\\Migrations\\20260307115953_AddGalleryImages.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAiwCcAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-07T11:59:53.763Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

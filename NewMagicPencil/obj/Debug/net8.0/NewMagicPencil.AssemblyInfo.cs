@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NewMagicPencil")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8077c561ecc85fadc08704d169d2128c7163a33c")]
 [assembly: System.Reflection.AssemblyProductAttribute("NewMagicPencil")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NewMagicPencil")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

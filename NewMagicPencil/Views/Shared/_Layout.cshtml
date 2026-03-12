@@ -25,6 +25,12 @@
                 <div class="ms-auto d-flex align-items-center gap-3">
                     <a asp-controller="Blog" asp-action="Index" class="nav-link">Blogs</a>
                     <a asp-controller="Category" asp-action="Index" class="nav-link">Portfolio</a>
+                    <a class="nav-link" asp-controller="GalleryModule" asp-action="Index">
+                        &#10084;&#65039; Gallery
+                    </a>
+                    <a asp-controller="Error" asp-action="Logs" class="nav-link">
+                        <i class="bi bi-bug-fill text-danger"></i> Error Logs
+                    </a>
                     <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger btn-sm">Logout</a>
                 </div>
             </div>

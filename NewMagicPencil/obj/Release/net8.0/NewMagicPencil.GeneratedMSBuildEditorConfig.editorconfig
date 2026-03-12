@@ -58,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/DELL/Desktop/DUFFL/NewMagicPencilProject/NewMagicPencil/Views/Category/Gallery.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcR2FsbGVyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/DELL/Desktop/DUFFL/NewMagicPencilProject/NewMagicPencil/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -66,8 +70,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcVXBsb2FkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/DELL/Desktop/DUFFL/NewMagicPencilProject/NewMagicPencil/Views/Category/UploadBlocked.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcVXBsb2FkQmxvY2tlZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/DELL/Desktop/DUFFL/NewMagicPencilProject/NewMagicPencil/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/DUFFL/NewMagicPencilProject/NewMagicPencil/Views/Error/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/DUFFL/NewMagicPencilProject/NewMagicPencil/Views/Error/Logs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcTG9ncy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/DUFFL/NewMagicPencilProject/NewMagicPencil/Views/GalleryModule/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2FsbGVyeU1vZHVsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/DELL/Desktop/DUFFL/NewMagicPencilProject/NewMagicPencil/Views/Home/Index.cshtml]

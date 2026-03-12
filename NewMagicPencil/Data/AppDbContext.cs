@@ -11,5 +11,8 @@ namespace NewMagicPencil.Data
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryImage> CategoryImages { get; set; }
+
+        public DbSet<GalleryImage> GalleryImages { get; set; }
+        public DbSet<ErrorLog> ErrorLogs { get; set; }
     }
 }

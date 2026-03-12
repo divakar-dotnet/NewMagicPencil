@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using NewMagicPencil.Data;
+using NewMagicPencil.Middleware;
 using NewMagicPencil.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,12 +23,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.SlidingExpiration = true;
         options.Cookie.IsEssential = true;
         options.Cookie.HttpOnly = true;
-
-        // ── FIX: use SameAsRequest so it works on both HTTP and HTTPS ──
         options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
         options.Cookie.SameSite = SameSiteMode.Lax;
-        // ────────────────────────────────────────────────────────────────
-
         options.AccessDeniedPath = "/Account/Login";
     });
 
@@ -38,16 +35,22 @@ var app = builder.Build();
 // ── CREATE UPLOAD FOLDERS ON STARTUP ─────────────────────────
 var wwwroot = app.Environment.WebRootPath
               ?? Path.Combine(app.Environment.ContentRootPath, "wwwroot");
-
 Directory.CreateDirectory(Path.Combine(wwwroot, "uploads", "blog-images"));
 Directory.CreateDirectory(Path.Combine(wwwroot, "uploads", "portfolio-images"));
 Directory.CreateDirectory(Path.Combine(wwwroot, "images"));
 // ─────────────────────────────────────────────────────────────
 
 app.UseStaticFiles();
+app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+
+// GalleryModule route MUST come before default route
+app.MapControllerRoute(
+    name: "gallerymodule",
+    pattern: "GalleryModule",
+    defaults: new { controller = "GalleryModule", action = "Index" });
 
 app.MapControllerRoute(
     name: "default",

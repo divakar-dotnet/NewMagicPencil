@@ -1,49 +1,140 @@
-﻿@model NewMagicPencil.Controllers.CategoryFormModel
-@{
+﻿@{
     ViewData["Title"] = "Add Category";
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h2><i class="bi bi-plus-circle"></i> Add Category</h2>
-    <a asp-action="Index" class="btn btn-outline-dark"><i class="bi bi-arrow-left"></i> Back</a>
+    <a asp-controller="Category" asp-action="Index" class="btn btn-outline-dark">
+        <i class="bi bi-arrow-left"></i> Back
+    </a>
 </div>
 
-<div class="card shadow-sm border-0" style="max-width:600px;">
-    <div class="card-body p-4">
-        <form id="createForm" asp-action="Create" method="post">
-            @Html.AntiForgeryToken()
-            <div class="mb-3">
-                <label class="form-label fw-semibold">Category Name <span class="text-danger">*</span></label>
-                <input asp-for="CategoryName" class="form-control" placeholder="Enter category name" />
-                <span asp-validation-for="CategoryName" class="text-danger small"></span>
+<div class="row">
+    <!-- LEFT: Form -->
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <form id="categoryForm" asp-action="Create" method="post" novalidate>
+                    @Html.AntiForgeryToken()
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">
+                            Category Name <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" id="categoryNameInput" name="CategoryName"
+                               class="form-control" placeholder="Enter category name"
+                               value="@(ViewBag.CategoryName ?? "")" />
+                        <div class="field-error" id="categoryNameError"></div>
+                    </div>
+                    <button type="submit" id="saveBtn" class="btn btn-success px-4">
+                        <span class="btn-text"><i class="bi bi-floppy"></i> Save</span>
+                        <span class="spinner-border spinner-border-sm d-none ms-1"></span>
+                    </button>
+                    <a asp-action="Index" class="btn btn-dark px-4 ms-2">Cancel</a>
+                </form>
             </div>
-            <div class="mb-4">
-                <label class="form-label fw-semibold">Status <span class="text-danger">*</span></label>
-                <select asp-for="Status" class="form-select">
-                    <option value="Active">Active</option>
-                    <option value="Inactive">Inactive</option>
-                </select>
-            </div>
-            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
-            {
-                <div class="alert alert-danger py-2 small">@error.ErrorMessage</div>
-            }
-            <button type="submit" id="saveBtn" class="btn btn-success px-4">
-                <span class="btn-text">Save</span>
-                <span class="spinner-border spinner-border-sm d-none ms-1"></span>
-            </button>
-            <a asp-action="Index" class="btn btn-dark px-4 ms-2">Cancel</a>
-        </form>
+        </div>
     </div>
-</div>
 
-@section Scripts {
-    <script>
-        document.getElementById('createForm').addEventListener('submit', function () {
-            const btn = document.getElementById('saveBtn');
-            btn.querySelector('.btn-text').textContent = 'Saving...';
-            btn.querySelector('.spinner-border').classList.remove('d-none');
-            btn.disabled = true;
-        });
-    </script>
-}
+    <!-- RIGHT: Existing Categories -->
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white fw-semibold">
+                <i class="bi bi-list-ul"></i> Existing Categories
+            </div>
+            <div class="card-body p-0">
+                @{
+                    var categories = ViewBag.AllCategories as List<NewMagicPencil.Models.Category>;
+                }
+                @if (categories != null && categories.Any())
+                {
+                    <table class="table table-hover mb-0">
+                        <tbody>
+                            @foreach (var cat in categories)
+                            {
+                                <tr>
+                                    <td class="ps-3 py-2">@cat.CategoryName</td>
+                                    <td class="text-end pe-3 py-2">
+                                        @* Use a form to match the [HttpPost] in the Controller *@
+                                        <form asp-action="Delete" asp-route-id="@cat.Id" method="post" onsubmit="return confirm('Delete this category?')">
+                                            @Html.AntiForgeryToken()
+                                            @* We add a hidden input to tell the controller to come back to 'Create' *@
+                                            <input type="hidden" name="returnUrl" value="Create" />
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="text-center text-muted py-4">
+                        <i class="bi bi-inbox fs-4"></i><br />No categories yet.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+<style>
+    .field-error {
+        color: #d63031;
+        font-size: 0.82rem;
+        margin-top: 4px;
+        display: none;
+        transition: opacity 0.5s ease;
+    }
+
+        .field-error.show {
+            display: block !important;
+        }
+
+    .border-invalid {
+        border-color: #d63031 !important;
+        box-shadow: none !important;
+    }
+</style>
+
+<script>
+    document.getElementById('categoryForm').addEventListener('submit', function (e) {
+        var input = document.getElementById('categoryNameInput');
+        var error = document.getElementById('categoryNameError');
+        var val = input.value.trim();
+
+        // Reset
+        error.classList.remove('show');
+        input.classList.remove('border-invalid');
+
+        if (!val) {
+            e.preventDefault(); // ← stops form submit, so Existing Categories panel stays!
+
+            error.innerHTML = '<i class="bi bi-exclamation-circle"></i> Category Name is required.';
+            error.classList.add('show');
+            input.classList.add('border-invalid');
+            input.focus();
+
+            // Auto-disappear after 3 seconds
+            setTimeout(function () {
+                error.classList.remove('show');
+                input.classList.remove('border-invalid');
+            }, 3000);
+
+            return;
+        }
+
+        // Valid — show spinner
+        var btn = document.getElementById('saveBtn');
+        btn.querySelector('.btn-text').innerHTML = '<i class="bi bi-hourglass-split"></i> Saving...';
+        btn.querySelector('.spinner-border').classList.remove('d-none');
+        btn.disabled = true;
+    });
+
+    // Clear error on typing
+    document.getElementById('categoryNameInput').addEventListener('input', function () {
+        document.getElementById('categoryNameError').classList.remove('show');
+        this.classList.remove('border-invalid');
+    });
+</script>

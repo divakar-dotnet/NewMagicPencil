@@ -180,3 +180,10 @@ C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\NewMagicPencil\obj\Release\net
 C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\NewMagicPencil\obj\Release\net8.0\NewMagicPencil.pdb
 C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\NewMagicPencil\obj\Release\net8.0\NewMagicPencil.genruntimeconfig.cache
 C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\NewMagicPencil\obj\Release\net8.0\ref\NewMagicPencil.dll
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\NewMagicPencil\bin\Release\net8.0\Publish\web.config
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\NewMagicPencil\bin\Release\net8.0\Publish\appsettings.Development.json
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\NewMagicPencil\bin\Release\net8.0\Publish\appsettings.json
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\NewMagicPencil\bin\Release\net8.0\Publish\NewMagicPencil.deps.json
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\NewMagicPencil\bin\Release\net8.0\Publish\NewMagicPencil.runtimeconfig.json
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\NewMagicPencil\bin\Release\net8.0\Publish\NewMagicPencil.staticwebassets.endpoints.json
+C:\Users\DELL\Desktop\DUFFL\NewMagicPencilProject\NewMagicPencil\obj\Release\net8.0\NewMagicPencil.sourcelink.json

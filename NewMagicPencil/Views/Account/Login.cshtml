@@ -6,6 +6,7 @@
 <head>
     <title>Magic Pencil - Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {
             background: #f4f7f6;
@@ -15,7 +16,6 @@
             justify-content: center;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         .login-box {
             background: white;
             padding: 40px;
@@ -24,73 +24,33 @@
             width: 100%;
             max-width: 420px;
         }
-
-        .btn-magic {
-            background: #6c5ce7;
-            color: white;
-            border: none;
-        }
-
-            .btn-magic:hover {
-                background: #5b4cc4;
-                color: white;
-            }
-
+        .btn-magic { background: #6c5ce7; color: white; border: none; }
+        .btn-magic:hover { background: #5b4cc4; color: white; }
         .btn-link-magic {
-            color: #6c5ce7;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0;
-            font-size: 0.875rem;
+            color: #6c5ce7; cursor: pointer;
+            background: none; border: none; padding: 0; font-size: 0.875rem;
         }
-
-            .btn-link-magic:hover {
-                color: #5b4cc4;
-                text-decoration: underline;
-            }
-
-        #errorAlert {
-            transition: opacity 1s ease-out;
+        .btn-link-magic:hover { color: #5b4cc4; text-decoration: underline; }
+        #errorAlert { transition: opacity 1s ease-out; }
+        #errorAlert.fade-out { opacity: 0; }
+        .step { display: none; }
+        .step.active { display: block; }
+        .otp-input {
+            letter-spacing: 8px; font-size: 1.4rem;
+            text-align: center; font-weight: bold;
         }
-
-            #errorAlert.fade-out {
-                opacity: 0;
-            }
-
-        .step {
+        .strength-bar { height: 5px; border-radius: 3px; transition: all 0.3s; margin-top: 5px; }
+        .validation-item { font-size: 0.78rem; }
+        .validation-item.valid { color: #00b894; }
+        .validation-item.invalid { color: #d63031; }
+        .field-error {
+            color: #d63031;
+            font-size: 0.8rem;
+            margin-top: 4px;
             display: none;
         }
-
-            .step.active {
-                display: block;
-            }
-
-        .otp-input {
-            letter-spacing: 8px;
-            font-size: 1.4rem;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .strength-bar {
-            height: 5px;
-            border-radius: 3px;
-            transition: all 0.3s;
-            margin-top: 5px;
-        }
-
-        .validation-item {
-            font-size: 0.78rem;
-        }
-
-            .validation-item.valid {
-                color: #00b894;
-            }
-
-            .validation-item.invalid {
-                color: #d63031;
-            }
+        .field-error.show { display: block !important; }
+        .form-control.is-invalid { border-color: #d63031; box-shadow: none; }
     </style>
 </head>
 <body>
@@ -99,17 +59,17 @@
         <!-- LOGIN FORM -->
         <div id="loginSection">
             <h2 class="text-center mb-4">&#10024; Magic Pencil</h2>
-            <form method="post">
+            <form method="post" id="loginForm" novalidate>
                 @Html.AntiForgeryToken()
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control"
-                           placeholder="Enter email" required />
+                    <input type="text" name="email" id="loginEmail" class="form-control" placeholder="Enter email" />
+                    <div class="field-error" id="emailError"></div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control"
-                           placeholder="Enter password" required />
+                    <input type="password" name="password" id="loginPassword" class="form-control" placeholder="Enter password" />
+                    <div class="field-error" id="passwordError"></div>
                 </div>
 
                 @if (ViewBag.Error != null)
@@ -117,15 +77,13 @@
                     <div id="errorAlert" class="alert alert-danger py-2">@ViewBag.Error</div>
                 }
 
-                @* <button type="submit" class="btn btn-magic w-100 py-2 mb-3">Sign In</button> *@
                 <button type="submit" id="loginBtn" class="btn btn-magic w-100 py-2 mb-3">
                     <span id="loginText">Sign In</span>
                     <span id="loginSpinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
                 </button>
-
                 <div class="text-center">
                     <button type="button" class="btn-link-magic" onclick="showForgotPassword()">
-                        &#128273; Forgot Password?
+                        &#128273; Forgot Password ?
                     </button>
                 </div>
             </form>
@@ -134,16 +92,13 @@
         <!-- FORGOT PASSWORD FLOW -->
         <div id="forgotSection" style="display:none;">
 
-            <!-- STEP 1: Enter Email -->
+            <!-- STEP 1 -->
             <div id="step1" class="step active">
-                <h5 class="text-center mb-1">&#128273; Forgot Password</h5>
-                <p class="text-muted text-center small mb-4">
-                    Enter your registered email to receive an OTP
-                </p>
+                <h5 class="text-center mb-1">&#128273; Forgot Password ?</h5>
+                <p class="text-muted text-center small mb-4">Enter your registered email to receive an OTP</p>
                 <div class="mb-3">
                     <label class="form-label">Email Address</label>
-                    <input type="email" id="fpEmail" class="form-control"
-                           placeholder="Enter your email" />
+                    <input type="text" id="fpEmail" class="form-control" placeholder="Enter your email" />
                 </div>
                 <div id="step1Alert"></div>
                 <button class="btn btn-magic w-100 py-2 mb-3" onclick="sendOtp()">
@@ -155,15 +110,11 @@
                 </div>
             </div>
 
-            <!-- STEP 2: Enter OTP -->
+            <!-- STEP 2 -->
             <div id="step2" class="step">
                 <h5 class="text-center mb-1">&#128231; Enter OTP</h5>
-                <p class="text-muted text-center small mb-1">
-                    We sent a 5-digit OTP to <strong id="displayEmail"></strong>
-                </p>
-                <p class="text-center small mb-4">
-                    <span id="otpTimer" class="text-danger fw-bold"></span>
-                </p>
+                <p class="text-muted text-center small mb-1">We sent a 5-digit OTP to <strong id="displayEmail"></strong></p>
+                <p class="text-center small mb-4"><span id="otpTimer" class="text-danger fw-bold"></span></p>
                 <div class="mb-3">
                     <label class="form-label">OTP Code</label>
                     <input type="text" id="otpInput" class="form-control otp-input"
@@ -178,9 +129,7 @@
                 <div class="text-center mt-2">
                     <small class="text-muted">
                         Didn't receive?
-                        <button class="btn-link-magic" id="resendBtn" onclick="resendOtp()" disabled>
-                            Resend OTP
-                        </button>
+                        <button class="btn-link-magic" id="resendBtn" onclick="resendOtp()" disabled>Resend OTP</button>
                         <span id="resendTimer"></span>
                     </small>
                 </div>
@@ -189,28 +138,24 @@
                 </div>
             </div>
 
-            <!-- STEP 3: Reset Password -->
+            <!-- STEP 3 -->
             <div id="step3" class="step">
                 <h5 class="text-center mb-1">&#128274; Set New Password</h5>
                 <p class="text-muted text-center small mb-4">Create a strong new password</p>
                 <div class="mb-3">
                     <label class="form-label">New Password</label>
-                    <input type="password" id="newPassword" class="form-control"
-                           placeholder="Enter new password"
-                           oninput="checkPasswordStrength()" />
-                    <div id="strengthBar" class="strength-bar bg-secondary mt-1"></div>
+                    <input type="password" id="newPassword" class="form-control" placeholder="Enter new password" oninput="checkPasswordStrength()" />
+                    <div id="strengthBar" class="strength-bar bg-secondary mt-1" style="width:0%;"></div>
                     <small id="strengthText" class="text-muted"></small>
                 </div>
                 <div class="mb-3 ps-1">
-                    <div id="v-length" class="validation-item invalid">&#10007; At least 6 characters</div>
-                    <div id="v-upper" class="validation-item invalid">&#10007; At least one uppercase letter</div>
-                    <div id="v-number" class="validation-item invalid">&#10007; At least one number</div>
+                    <div id="v-length" class="validation-item invalid">&#10007; Minimum 6 characters</div>
+                    <div id="v-upper" class="validation-item invalid">&#10007; At least one upper case</div>
+                    <div id="v-number" class="validation-item invalid">&#10007; At least one Numeric</div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Confirm Password</label>
-                    <input type="password" id="confirmPassword" class="form-control"
-                           placeholder="Re-enter new password"
-                           oninput="checkPasswordMatch()" />
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Re-enter new password" oninput="checkPasswordMatch()" />
                     <small id="matchMsg"></small>
                 </div>
                 <div id="step3Alert"></div>
@@ -218,50 +163,93 @@
                     <span id="resetText">Reset Password</span>
                     <span id="resetSpinner" class="spinner-border spinner-border-sm ms-2 d-none"></span>
                 </button>
+                <div class="text-center mt-3">
+                    <button class="btn-link-magic" onclick="showLogin()">&#8592; Back to Login</button>
+                </div>
             </div>
 
-            <!-- STEP 4: Success -->
+            <!-- STEP 4 -->
             <div id="step4" class="step text-center">
-                <div style="font-size: 4rem;">&#9989;</div>
+                <div style="font-size:4rem;">&#9989;</div>
                 <h5 class="mt-3">Password Reset Successful!</h5>
-                <p class="text-muted">
-                    Your password has been updated. You can now login with your new password.
-                </p>
+                <p class="text-muted">Your password has been updated.<br />You can now login with your new password.</p>
                 <button class="btn btn-magic w-100 py-2" onclick="showLogin()">Go to Login</button>
             </div>
 
         </div>
     </div>
 
-
     <script>
-        // Handle the Login Form Loading State
-        const loginForm = document.querySelector('#loginSection form');
-        if(loginForm) {
-            loginForm.addEventListener('submit', function (e) {
-                const btn = document.getElementById('loginBtn');
-                const text = document.getElementById('loginText');
-                const spinner = document.getElementById('loginSpinner');
+        // ── EMAIL VALIDATION ──────────────────────────────────
+      
+        var AT = String.fromCharCode(64);
+        var emailRegex = new RegExp('^[^\\s' + AT + ']+' + AT + '[^\\s' + AT + ']+\\.[^\\s' + AT + ']+$');
 
-                btn.disabled = true;
-                text.textContent = "Logging in...";
-                spinner.classList.remove('d-none');
-            });
+        function isValidEmail(val) {
+            return emailRegex.test(val);
         }
-    </script>
 
-    <script>
-        let currentEmail = '';
-        let currentOtp = '';
-        let otpCountdown;
-        let resendCountdown;
+        // ── LOGIN FORM VALIDATION ─────────────────────────────
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            var email = document.getElementById('loginEmail').value.trim();
+            var password = document.getElementById('loginPassword').value.trim();
+            var emailError = document.getElementById('emailError');
+            var passwordError = document.getElementById('passwordError');
+            var emailInput = document.getElementById('loginEmail');
+            var passwordInput = document.getElementById('loginPassword');
+            var valid = true;
 
-        // Auto-dismiss error alert
-        const errorAlert = document.getElementById('errorAlert');
+            emailError.classList.remove('show');
+            passwordError.classList.remove('show');
+            emailInput.classList.remove('is-invalid');
+            passwordInput.classList.remove('is-invalid');
+
+            if (!email) {
+                emailError.innerHTML = '<i class="bi bi-exclamation-circle"></i> Please enter your email.';
+                emailError.classList.add('show');
+                emailInput.classList.add('is-invalid');
+                valid = false;
+            } else if (!isValidEmail(email)) {
+                emailError.innerHTML = '<i class="bi bi-exclamation-circle"></i> Please enter a valid email address.';
+                emailError.classList.add('show');
+                emailInput.classList.add('is-invalid');
+                valid = false;
+            }
+
+            if (!password) {
+                passwordError.innerHTML = '<i class="bi bi-exclamation-circle"></i> Please enter your password.';
+                passwordError.classList.add('show');
+                passwordInput.classList.add('is-invalid');
+                valid = false;
+            }
+
+            if (!valid) { e.preventDefault(); return; }
+
+            document.getElementById('loginText').textContent = 'Signing in...';
+            document.getElementById('loginSpinner').classList.remove('d-none');
+            document.getElementById('loginBtn').disabled = true;
+        });
+
+        document.getElementById('loginEmail').addEventListener('input', function () {
+            document.getElementById('emailError').classList.remove('show');
+            this.classList.remove('is-invalid');
+        });
+
+        document.getElementById('loginPassword').addEventListener('input', function () {
+            document.getElementById('passwordError').classList.remove('show');
+            this.classList.remove('is-invalid');
+        });
+
+        var currentEmail = '';
+        var currentOtp = '';
+        var otpCountdown;
+        var resendCountdown;
+
+        var errorAlert = document.getElementById('errorAlert');
         if (errorAlert) {
-            setTimeout(() => {
+            setTimeout(function () {
                 errorAlert.classList.add('fade-out');
-                setTimeout(() => errorAlert.remove(), 1000);
+                setTimeout(function () { errorAlert.remove(); }, 1000);
             }, 3000);
         }
 
@@ -277,9 +265,9 @@
             clearAllTimers();
         }
 
-        function goToStep(stepNum) {
-            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-            document.getElementById('step' + stepNum).classList.add('active');
+        function goToStep(n) {
+            document.querySelectorAll('.step').forEach(function (s) { s.classList.remove('active'); });
+            document.getElementById('step' + n).classList.add('active');
         }
 
         function goToStep1() {
@@ -288,18 +276,16 @@
             document.getElementById('step1Alert').innerHTML = '';
         }
 
-        function showAlert(containerId, message, type = 'danger') {
-            document.getElementById(containerId).innerHTML =
-                '<div class="alert alert-' + type + ' py-2 small">' + message + '</div>';
+        function showAlert(id, msg, type) {
+            if (!type) type = 'danger';
+            document.getElementById(id).innerHTML = '<div class="alert alert-' + type + ' py-2 small">' + msg + '</div>';
         }
 
-        function clearAlert(containerId) {
-            document.getElementById(containerId).innerHTML = '';
-        }
+        function clearAlert(id) { document.getElementById(id).innerHTML = ''; }
 
-        function setLoading(textId, spinnerId, isLoading) {
-            document.getElementById(textId).classList.toggle('d-none', isLoading);
-            document.getElementById(spinnerId).classList.toggle('d-none', !isLoading);
+        function setLoading(textId, spinnerId, loading) {
+            document.getElementById(textId).classList.toggle('d-none', loading);
+            document.getElementById(spinnerId).classList.toggle('d-none', !loading);
         }
 
         function clearAllTimers() {
@@ -307,29 +293,22 @@
             clearInterval(resendCountdown);
         }
 
-        // STEP 1: Send OTP
+        // ── STEP 1: Send OTP ──────────────────────────────────
         async function sendOtp() {
-            const email = document.getElementById('fpEmail').value.trim();
-            if (!email) { showAlert('step1Alert', 'Please enter your email.'); return; }
+            var email = document.getElementById('fpEmail').value.trim();
 
-            const emailRegex = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
-            if (!emailRegex.test(email)) {
-                showAlert('step1Alert', 'Please enter a valid email.');
-                return;
-            }
+            if (!email) { showAlert('step1Alert', 'Please enter your email.'); return; }
+            if (!isValidEmail(email)) { showAlert('step1Alert', 'Please enter a valid email address.'); return; }
 
             setLoading('sendOtpText', 'sendOtpSpinner', true);
             clearAlert('step1Alert');
-
             try {
-                const res = await fetch('/Account/SendOtp', {
+                var res = await fetch('/Account/SendOtp', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(email)
                 });
-
-                const data = await res.json();
-
+                var data = await res.json();
                 if (res.ok) {
                     currentEmail = email;
                     document.getElementById('displayEmail').textContent = email;
@@ -348,45 +327,34 @@
             }
         }
 
-        // OTP Expiry Timer (5 min)
         function startOtpTimer() {
-            let seconds = 5 * 60;
-            const timerEl = document.getElementById('otpTimer');
+            var secs = 5 * 60;
+            var el = document.getElementById('otpTimer');
             clearInterval(otpCountdown);
-
-            otpCountdown = setInterval(() => {
-                const m = String(Math.floor(seconds / 60)).padStart(2, '0');
-                const s = String(seconds % 60).padStart(2, '0');
-                timerEl.textContent = 'OTP expires in ' + m + ':' + s;
-                if (--seconds < 0) {
-                    clearInterval(otpCountdown);
-                    timerEl.textContent = 'OTP expired. Please request a new one.';
-                }
+            otpCountdown = setInterval(function () {
+                var m = String(Math.floor(secs / 60)).padStart(2, '0');
+                var s = String(secs % 60).padStart(2, '0');
+                el.textContent = 'OTP expires in ' + m + ':' + s;
+                if (--secs < 0) { clearInterval(otpCountdown); el.textContent = 'OTP expired. Please request a new one.'; }
             }, 1000);
         }
 
-        // Resend Timer (30 sec)
         function startResendTimer() {
-            let seconds = 30;
-            const resendBtn = document.getElementById('resendBtn');
-            const resendTimerEl = document.getElementById('resendTimer');
-            resendBtn.disabled = true;
+            var secs = 30;
+            var btn = document.getElementById('resendBtn');
+            var el = document.getElementById('resendTimer');
+            btn.disabled = true;
             clearInterval(resendCountdown);
-
-            resendCountdown = setInterval(() => {
-                resendTimerEl.textContent = ' (' + seconds + 's)';
-                if (--seconds < 0) {
-                    clearInterval(resendCountdown);
-                    resendBtn.disabled = false;
-                    resendTimerEl.textContent = '';
-                }
+            resendCountdown = setInterval(function () {
+                el.textContent = ' (' + secs + 's)';
+                if (--secs < 0) { clearInterval(resendCountdown); btn.disabled = false; el.textContent = ''; }
             }, 1000);
         }
 
         async function resendOtp() {
             clearInterval(otpCountdown);
             try {
-                const res = await fetch('/Account/SendOtp', {
+                var res = await fetch('/Account/SendOtp', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(currentEmail)
@@ -396,37 +364,32 @@
                     showAlert('step2Alert', 'New OTP sent to your email!', 'success');
                     startOtpTimer();
                     startResendTimer();
-                    setTimeout(() => clearAlert('step2Alert'), 3000);
+                    setTimeout(function () { clearAlert('step2Alert'); }, 3000);
                 }
             } catch (e) { }
         }
 
-        // STEP 2: Verify OTP
+        // ── STEP 2: Verify OTP ────────────────────────────────
         async function verifyOtp() {
-            const otp = document.getElementById('otpInput').value.trim();
-            if (otp.length !== 5) {
-                showAlert('step2Alert', 'Please enter the 5-digit OTP.');
-                return;
-            }
+            var otp = document.getElementById('otpInput').value.trim();
+            if (otp.length !== 5) { showAlert('step2Alert', 'Please enter the 5-digit OTP.'); return; }
 
             setLoading('verifyOtpText', 'verifyOtpSpinner', true);
             clearAlert('step2Alert');
-
             try {
-                const res = await fetch('/Account/VerifyOtp', {
+                var res = await fetch('/Account/VerifyOtp', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email: currentEmail, otp: otp })
                 });
-
-                const data = await res.json();
-
+                var data = await res.json();
                 if (res.ok) {
                     currentOtp = otp;
                     clearAllTimers();
                     goToStep(3);
                     document.getElementById('newPassword').value = '';
                     document.getElementById('confirmPassword').value = '';
+                    resetStrengthUI();
                 } else {
                     showAlert('step2Alert', data.message || 'Invalid OTP.');
                 }
@@ -437,100 +400,81 @@
             }
         }
 
-        // STEP 3: Password Strength
+        // ── STEP 3: Password Strength ─────────────────────────
+        function resetStrengthUI() {
+            var bar = document.getElementById('strengthBar');
+            bar.style.width = '0%';
+            bar.className = 'strength-bar bg-secondary mt-1';
+            document.getElementById('strengthText').textContent = '';
+            setValid('v-length', false, 'Minimum 6 characters');
+            setValid('v-upper', false, 'At least one upper case');
+            setValid('v-number', false, 'At least one Numeric');
+            document.getElementById('matchMsg').textContent = '';
+        }
+
         function checkPasswordStrength() {
-            const pw = document.getElementById('newPassword').value;
-            const bar = document.getElementById('strengthBar');
-            const text = document.getElementById('strengthText');
+            var pw = document.getElementById('newPassword').value;
+            var bar = document.getElementById('strengthBar');
+            var text = document.getElementById('strengthText');
 
-            const hasLength = pw.length >= 6;
-            const hasUpper = /[A-Z]/.test(pw);
-            const hasNumber = /[0-9]/.test(pw);
-            const hasSpecial = /[!#$%^&*]/.test(pw);
+            var hasLength = pw.length >= 6;
+            var hasUpper = /[A-Z]/.test(pw);
+            var hasNumber = /[0-9]/.test(pw);
+            var hasSpecial = /[!#$%^&*]/.test(pw);
 
-            setValid('v-length', hasLength, 'At least 6 characters');
-            setValid('v-upper', hasUpper, 'At least one uppercase letter');
-            setValid('v-number', hasNumber, 'At least one number');
+            setValid('v-length', hasLength, 'Minimum 6 characters');
+            setValid('v-upper', hasUpper, 'At least one upper case');
+            setValid('v-number', hasNumber, 'At least one Numeric');
 
-            const score = [hasLength, hasUpper, hasNumber, hasSpecial].filter(Boolean).length;
+            var score = [hasLength, hasUpper, hasNumber, hasSpecial].filter(Boolean).length;
+            var colors = ['bg-danger', 'bg-warning', 'bg-info', 'bg-success'];
+            var labels = ['Weak', 'Fair', 'Good', 'Strong'];
+            var textColors = ['text-danger', 'text-warning', 'text-info', 'text-success'];
+            var idx = Math.max(0, score - 1);
 
-            const colors = ['bg-danger', 'bg-warning', 'bg-info', 'bg-success'];
-            const labels = ['Weak', 'Fair', 'Good', 'Strong'];
-            const textColors = ['text-danger', 'text-warning', 'text-info', 'text-success'];
-            const idx = Math.max(0, score - 1);
-
-            bar.className = 'strength-bar ' + colors[idx];
+            bar.className = 'strength-bar mt-1 ' + colors[idx];
             bar.style.width = (score * 25) + '%';
             text.textContent = pw.length ? labels[idx] : '';
             text.className = 'small ' + textColors[idx];
-
             checkPasswordMatch();
         }
 
         function setValid(id, isValid, label) {
-            const el = document.getElementById(id);
+            var el = document.getElementById(id);
             el.className = 'validation-item ' + (isValid ? 'valid' : 'invalid');
-            el.textContent = (isValid ? '✓ ' : '✗ ') + label;
+            el.textContent = (isValid ? '\u2713 ' : '\u2717 ') + label;
         }
 
         function checkPasswordMatch() {
-            const np = document.getElementById('newPassword').value;
-            const cp = document.getElementById('confirmPassword').value;
-            const msg = document.getElementById('matchMsg');
+            var np = document.getElementById('newPassword').value;
+            var cp = document.getElementById('confirmPassword').value;
+            var msg = document.getElementById('matchMsg');
             if (!cp) { msg.textContent = ''; return; }
-            if (np === cp) {
-                msg.textContent = '✓ Passwords match';
-                msg.className = 'small text-success';
-            } else {
-                msg.textContent = '✗ Passwords do not match';
-                msg.className = 'small text-danger';
-            }
+            if (np === cp) { msg.textContent = '\u2713 Passwords match'; msg.className = 'small text-success'; }
+            else { msg.textContent = '\u2717 Passwords do not match'; msg.className = 'small text-danger'; }
         }
 
-        // STEP 3: Reset Password
+        // ── STEP 3: Reset Password ────────────────────────────
         async function resetPassword() {
-            const newPw = document.getElementById('newPassword').value;
-            const confirmPw = document.getElementById('confirmPassword').value;
+            var newPw = document.getElementById('newPassword').value;
+            var confirmPw = document.getElementById('confirmPassword').value;
 
-            if (newPw.length < 6) {
-                showAlert('step3Alert', 'Minimum 6 characters.');
-                return;
-            }
-            if (!/[A-Z]/.test(newPw)) {
-                showAlert('step3Alert', 'Minimum at least one uppercase letter.');
-                return;
-            }
-            if (!/[0-9]/.test(newPw)) {
-                showAlert('step3Alert', 'Minimum at least one number.');
-                return;
-            }
-            if (newPw !== confirmPw) {
-                showAlert('step3Alert', 'Passwords do not match.');
-                return;
-            }
+            if (newPw.length < 6) { showAlert('step3Alert', 'Minimum 6 characters required.'); return; }
+            if (!/[A-Z]/.test(newPw)) { showAlert('step3Alert', 'At least one upper case letter required.'); return; }
+            if (!/[0-9]/.test(newPw)) { showAlert('step3Alert', 'At least one numeric digit required.'); return; }
+            if (newPw !== confirmPw) { showAlert('step3Alert', 'Passwords do not match.'); return; }
 
             setLoading('resetText', 'resetSpinner', true);
             clearAlert('step3Alert');
-
             try {
-                const res = await fetch('/Account/ResetPassword', {
+                var res = await fetch('/Account/ResetPassword', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        email: currentEmail,
-                        otp: currentOtp,
-                        newPassword: newPw,
-                        confirmPassword: confirmPw
-                    })
+                    body: JSON.stringify({ email: currentEmail, otp: currentOtp, newPassword: newPw, confirmPassword: confirmPw })
                 });
-
-                const data = await res.json();
-
-                if (res.ok) {
-                    goToStep(4);
-                } else {
-                    showAlert('step3Alert', data.message || 'Failed to reset password.');
-                }
+                var data = await res.json();
+                if (res.ok) { goToStep(4); }
+                else { showAlert('step3Alert', data.message || 'Failed to reset password.'); }
             } catch (e) {
                 showAlert('step3Alert', 'Network error. Please try again.');
             } finally {
