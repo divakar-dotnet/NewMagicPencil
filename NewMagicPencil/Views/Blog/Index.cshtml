@@ -1,4 +1,4 @@
-﻿@model List<NewMagicPencil.Models.Blog>
+﻿@* @model List<NewMagicPencil.Models.Blog>
 @{
     ViewData["Title"] = "Blog Management";
 }
@@ -94,6 +94,120 @@
                         cell.innerHTML = i + 1;
                     });
             });
+        });
+
+        function confirmDelete(id, title) {
+            Swal.fire({
+                title: 'Delete Blog?',
+                text: "Delete '" + title + "'?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, Delete!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Deleting...',
+                        allowOutsideClick: false,
+                        didOpen: () => Swal.showLoading()
+                    });
+                    document.getElementById('delete-form-' + id).submit();
+                }
+            });
+        }
+    </script>
+} *@
+
+@model List<NewMagicPencil.Models.Blog>
+@{
+    ViewData["Title"] = "Blog Management";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-journals"></i> Blog Management</h2>
+    <div>
+        <a asp-action="Index" asp-controller="Dashboard" class="btn btn-outline-dark me-2">Dashboard</a>
+        <a asp-action="Create" class="btn btn-magic">+ Add New Blog</a>
+    </div>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body">
+        <table id="blogTable" class="table table-hover align-middle" style="width:100%">
+            <thead class="table-light">
+                <tr>
+                    <th style="width: 50px;">S.No</th>
+                    <th>Title</th>
+                    <th>Short Description</th>
+                    <th>Date Published</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var blog in Model)
+                {
+                    <tr>
+                        <td class="fw-bold"></td> @* Empty cell for dynamic S.No *@
+                        <td><strong>@blog.Title</strong></td>
+                        <td>
+                            <span class="text-muted small">
+                                @(blog.ShortDescription?.Length > 60
+                                                            ? blog.ShortDescription.Substring(0, 60) + "..."
+                                                            : blog.ShortDescription)
+                            </span>
+                        </td>
+                        <td>@blog.PostedDate.ToString("dd MMM yyyy")</td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <a asp-action="Details" asp-route-id="@blog.Id" class="btn btn-sm btn-outline-info">
+                                    <i class="bi bi-eye"></i> View
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@blog.Id" class="btn btn-sm btn-outline-warning">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </a>
+                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                        onclick="confirmDelete(@blog.Id, '@Html.Raw(Html.Encode(blog.Title))')">
+                                    <i class="bi bi-trash"></i> Delete
+                                </button>
+                            </div>
+                            <form id="delete-form-@blog.Id" asp-action="Delete" method="post" style="display:none;">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="id" value="@blog.Id" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const table = $('#blogTable').DataTable({
+                "order": [[1, "asc"]], // Default sort by Title (Column Index 1) Ascending
+                "columnDefs": [
+                    {
+                        "searchable": false,
+                        "orderable": false,
+                        "targets": 0 // S.No column is not sortable or searchable
+                    }
+                ],
+                "language": {
+                    "search": "_INPUT_",
+                    "searchPlaceholder": "Search blogs..."
+                }
+            });
+
+            // ── DYNAMIC S.NO LOGIC ──
+            // This ensures S.No is always 1, 2, 3... based on current view
+            table.on('order.dt search.dt', function () {
+                table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                    cell.innerHTML = i + 1;
+                });
+            }).draw();
         });
 
         function confirmDelete(id, title) {

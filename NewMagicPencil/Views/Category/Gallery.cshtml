@@ -8,61 +8,72 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
         <h2><i class="bi bi-collection"></i> SR Page</h2>
-        <p class="text-muted mb-0">Category: <strong>@categoryName</strong></p>
+        <p class="text-muted mb-0">Category: <strong class="text-primary">@categoryName</strong></p>
     </div>
-    <a href="/Category/Upload?categoryId=@categoryId" class="btn btn-outline-dark">
-        <i class="bi bi-arrow-left"></i> Back to Upload
-    </a>
+    <div class="d-flex gap-2">
+        <a asp-controller="Category" asp-action="SRList" class="btn btn-outline-dark">
+            <i class="bi bi-list-ul"></i> Selection List
+        </a>
+        <a href="/Category/Upload?categoryId=@categoryId" class="btn btn-outline-secondary">
+            <i class="bi bi-cloud-upload"></i> Back to Upload
+        </a>
+    </div>
 </div>
 
 @if (Model != null && Model.Count > 0)
 {
     <div class="card shadow-sm border-0">
-        <div class="card-header bg-white fw-semibold">
-            <i class="bi bi-images"></i> SR Page Images
-            <span class="badge bg-primary ms-2">@Model.Count</span>
-            <small class="text-muted ms-2" style="font-weight:normal;">
-                <i class="bi bi-info-circle"></i> Click &#10084;&#65039; to add image to Gallery Module
+        <div class="card-header bg-white fw-semibold d-flex justify-content-between align-items-center">
+            <span>
+                <i class="bi bi-images"></i> SR Page Images
+                <span class="badge bg-primary ms-2" id="imageCountBadge">@Model.Count</span>
+            </span>
+            <small class="text-muted">
+                <i class="bi bi-info-circle"></i> Like ❤️ or Delete 🗑️ individual images
             </small>
         </div>
         <div class="card-body p-4">
-            <div class="row g-3">
+            <div class="row g-3" id="srImageGrid">
                 @foreach (var img in Model)
                 {
                     <div class="col-md-3 col-sm-4 col-6" id="gallery-card-@img.Id">
-                        <div class="card h-100 shadow-sm position-relative">
+                        <div class="card h-100 shadow-sm border-0 position-relative image-hover-card">
 
                             <img src="@img.ImageUrl"
                                  class="card-img-top"
-                                 style="height:200px; object-fit:cover; cursor:pointer;"
+                                 style="height:200px; object-fit:cover; cursor:pointer; border-radius: 8px 8px 0 0;"
                                  alt="SR Page Image"
                                  onclick="openLightbox('@img.ImageUrl')"
                                  onerror="this.src='/images/no-image.png'; this.onerror=null;" />
 
-                            <div class="card-body p-2">
-                                <p class="small text-muted mb-0" style="min-height:30px;">
-                                    @(string.IsNullOrEmpty(img.Description)
-                                                                ? "No description"
-                                                                : img.Description.Length > 50
-                                                                ? img.Description.Substring(0, 50) + "..."
-                                                                : img.Description)
+                            <div class="card-body p-2 border-top">
+                                <p class="small text-muted mb-0 text-truncate" title="@img.Description">
+                                    @(string.IsNullOrEmpty(img.Description) ? "No description" : img.Description)
                                 </p>
-                                <p class="small text-muted mt-1 mb-0">
-                                    @img.AddedOn.ToLocalTime().ToString("dd MMM yyyy")
+                                <p class="small text-muted mt-1 mb-0" style="font-size: 0.75rem;">
+                                    <i class="bi bi-calendar-event"></i> @img.AddedOn.ToLocalTime().ToString("dd MMM yyyy")
                                 </p>
                             </div>
 
-                            <div class="card-footer bg-white p-2 text-center">
-                                <button class="btn btn-sm w-100"
-                                        id="heart-@img.Id"
-                                        data-liked="@img.IsLiked.ToString().ToLower()"
-                                        onclick="toggleHeart(@img.Id)"
-                                        style="border: 1px solid #e84393; font-size:1.2rem; transition: all 0.2s;
-                                                       color: @(img.IsLiked ? "#e84393" : "#aaa");">
-                                    @(img.IsLiked ? "❤️" : "🤍")
-                                </button>
-                            </div>
+                            <div class="card-footer bg-white p-2 border-top-0">
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm flex-grow-1 heart-btn"
+                                            id="heart-@img.Id"
+                                            data-liked="@img.IsLiked.ToString().ToLower()"
+                                            onclick="toggleHeart(@img.Id)"
+                                            style="border: 1px solid #ff7675; transition: all 0.3s;
+                                                           background: @(img.IsLiked ? "#fff5f5" : "transparent");
+                                                           color: @(img.IsLiked ? "#d63031" : "#aaa");">
+                                        <i class="bi @(img.IsLiked ? "bi-heart-fill" : "bi-heart")"></i>
+                                    </button>
 
+                                    <button class="btn btn-sm btn-outline-danger"
+                                            onclick="deleteGalleryImage(@img.Id)"
+                                            title="Delete from SR Page">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 }
@@ -74,50 +85,34 @@ else
 {
     <div class="card shadow-sm border-0">
         <div class="card-body p-5 text-center">
-            <div style="font-size:4rem; color:#dee2e6;">
-                <i class="bi bi-collection"></i>
-            </div>
+            <div class="display-1 text-light"><i class="bi bi-images"></i></div>
             <h5 class="mt-3 text-secondary">SR Page is Empty</h5>
-            <p class="text-muted">
-                No images added yet.<br />
-                Go to the upload page and drag images into the Gallery Box.
-            </p>
+            <p class="text-muted">No images found for this category.</p>
             <a href="/Category/Upload?categoryId=@categoryId" class="btn btn-magic px-4">
-                <i class="bi bi-arrow-left"></i> Go to Upload Page
+                <i class="bi bi-plus-lg"></i> Upload Images
             </a>
         </div>
     </div>
 }
 
-@* Lightbox *@
-<div id="lightboxModal" style="display:none; position:fixed;
-     top:0; left:0; width:100%; height:100%;
-     background:rgba(0,0,0,0.92); z-index:9999;
-     justify-content:center; align-items:center; flex-direction:column;">
-    <button onclick="closeLightbox()" style="position:fixed; top:20px; right:30px;
-            background:none; border:none; color:white; font-size:2.5rem;
-            cursor:pointer; z-index:10000; line-height:1;">
-        &times;
-    </button>
-    <div style="max-width:90vw; max-height:90vh;
-                display:flex; align-items:center; justify-content:center;">
-        <img id="lightboxImg" src="" alt="Full Image"
-             style="max-width:90vw; max-height:85vh; object-fit:contain; border-radius:8px;" />
-    </div>
+@* Lightbox and Overlay *@
+<div id="lightboxModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;" onclick="closeLightbox()">
+    <button class="btn text-white" style="position:fixed; top:20px; right:30px; font-size:2.5rem;">&times;</button>
+    <img id="lightboxImg" src="" style="max-width:90vw; max-height:85vh; object-fit:contain; border-radius:8px;" />
 </div>
 
-@* Redirecting overlay *@
-<div id="redirectOverlay" style="display:none; position:fixed;
-     top:0; left:0; width:100%; height:100%;
-     background:rgba(108,92,231,0.92); z-index:99999;
-     justify-content:center; align-items:center; flex-direction:column;">
-    <div style="font-size:4rem;">&#10084;&#65039;</div>
+<div id="redirectOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(108,92,231,0.95); z-index:99999; justify-content:center; align-items:center; flex-direction:column;">
+    <div class="display-4 text-white"><i class="bi bi-heart-fill"></i></div>
     <h4 class="text-white mt-3 fw-bold">Added to Gallery Module!</h4>
-    <p class="text-white opacity-75">Taking you to the Gallery Module...</p>
     <div class="spinner-border text-white mt-2" role="status"></div>
 </div>
 
 <style>
+    .image-hover-card:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+
     .btn-magic {
         background: #6c5ce7;
         color: white;
@@ -132,73 +127,76 @@ else
 
 @section Scripts {
     <script>
-        var ANTIFORGERY_TOKEN = '';
-        var tokenInput = document.querySelector('input[name="__RequestVerificationToken"]');
-        if (tokenInput) ANTIFORGERY_TOKEN = tokenInput.value;
+        var ANTIFORGERY_TOKEN = $('input[name="__RequestVerificationToken"]').val();
 
+        // Heart logic
         function toggleHeart(id) {
-            var btn = document.getElementById('heart-' + id);
-            var isLiked = btn.getAttribute('data-liked') === 'true';
+            var btn = $('#heart-' + id);
+            var icon = btn.find('i');
 
-            if (isLiked) {
-                showRedirectAndGo();
+            if (btn.attr('data-liked') === 'true') {
+                showRedirect();
                 return;
             }
 
-            btn.disabled = true;
+            btn.prop('disabled', true);
 
-            var formData = new FormData();
-            formData.append('id', id);
-            formData.append('__RequestVerificationToken', ANTIFORGERY_TOKEN);
-
-            fetch('/Category/ToggleLike', { method: 'POST', body: formData })
-                .then(function (r) { return r.json(); })
-                .then(function (data) {
-                    if (data.success) {
-                        btn.setAttribute('data-liked', 'true');
-                        btn.textContent = '\u2764\uFE0F';
-                        btn.style.color = '#e84393';
-                        showRedirectAndGo();
-                    } else {
-                        btn.disabled = false;
-                        Swal.fire({ icon: 'error', title: 'Error',
-                            text: 'Could not update. Please try again.',
-                            confirmButtonColor: '#6c5ce7' });
-                    }
-                })
-                .catch(function () {
-                    btn.disabled = false;
-                    Swal.fire({ icon: 'error', title: 'Network Error',
-                        text: 'Please try again.', confirmButtonColor: '#6c5ce7' });
-                });
+            $.post('/Category/ToggleLike', { id: id, __RequestVerificationToken: ANTIFORGERY_TOKEN }, function (data) {
+                if (data.success) {
+                    btn.attr('data-liked', 'true').css('color', '#d63031').css('background', '#fff5f5');
+                    icon.removeClass('bi-heart').addClass('bi-heart-fill');
+                    showRedirect();
+                } else {
+                    btn.prop('disabled', false);
+                }
+            });
         }
 
-        function showRedirectAndGo() {
-            var overlay = document.getElementById('redirectOverlay');
-            overlay.style.display = 'flex';
-            setTimeout(function () {
-                window.location.href = '/GalleryModule';
-            }, 1500);
+        function showRedirect() {
+            $('#redirectOverlay').css('display', 'flex');
+            setTimeout(() => { window.location.href = '/GalleryModule'; }, 1200);
+        }
+
+        // NEW: Delete Logic
+        function deleteGalleryImage(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Remove this image from the SR Page?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.post('/Category/RemoveFromSRPage', { id: id, __RequestVerificationToken: ANTIFORGERY_TOKEN }, function (data) {
+                        if (data.success) {
+                            $('#gallery-card-' + id).fadeOut(300, function() {
+                                $(this).remove();
+                                // Update badge count
+                                var currentCount = parseInt($('#imageCountBadge').text());
+                                $('#imageCountBadge').text(currentCount - 1);
+
+                                // If last image deleted, reload for empty state
+                                if(currentCount - 1 === 0) location.reload();
+                            });
+                        } else {
+                            Swal.fire('Error', data.message, 'error');
+                        }
+                    });
+                }
+            });
         }
 
         function openLightbox(src) {
-            document.getElementById('lightboxImg').src = src;
-            document.getElementById('lightboxModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+            $('#lightboxImg').attr('src', src);
+            $('#lightboxModal').css('display', 'flex');
+            $('body').css('overflow', 'hidden');
         }
 
         function closeLightbox() {
-            document.getElementById('lightboxModal').style.display = 'none';
-            document.getElementById('lightboxImg').src = '';
-            document.body.style.overflow = '';
+            $('#lightboxModal').hide();
+            $('body').css('overflow', 'auto');
         }
-
-        document.getElementById('lightboxModal').addEventListener('click', function (e) {
-            if (e.target === this) closeLightbox();
-        });
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeLightbox();
-        });
     </script>
 }

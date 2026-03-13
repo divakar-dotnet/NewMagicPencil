@@ -19,46 +19,132 @@ namespace NewMagicPencil.Controllers
             _env = env;
         }
 
+
+        // Add this Action inside your CategoryController.cs
+        [Authorize]
+        public async Task<IActionResult> SRList()
+        {
+            // Only show Active categories to keep it clean
+            var categories = await _db.Categories
+                .Where(c => c.Status == "Active")
+                .OrderBy(c => c.CategoryName)
+                .ToListAsync();
+
+            return View(categories);
+        }
+        [HttpPost]
+        public async Task<IActionResult> RemoveFromSRPage(int id)
+        {
+            try
+            {
+                // Find the image in the GalleryImages table
+                var galleryImage = await _db.GalleryImages.FindAsync(id);
+                if (galleryImage == null)
+                    return Json(new { success = false, message = "Image not found." });
+
+                _db.GalleryImages.Remove(galleryImage);
+                await _db.SaveChangesAsync();
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+
         // ── CATEGORY CRUD ──────────────────────────────────────────────────
+
+        //public async Task<IActionResult> Index()
+        //{
+        //    var categories = await _db.Categories
+        //        .OrderByDescending(c => c.CreatedOn).ToListAsync();
+        //    return View(categories);
+        //}
 
         public async Task<IActionResult> Index()
         {
             var categories = await _db.Categories
-                .OrderByDescending(c => c.CreatedOn).ToListAsync();
+                .OrderBy(c => c.CategoryName) // Sorted A-Z
+                .ToListAsync();
             return View(categories);
         }
 
+        //public async Task<IActionResult> Create()
+        //{
+        //    ViewBag.AllCategories = await _db.Categories
+        //        .OrderByDescending(c => c.CreatedOn).ToListAsync();
+        //    return View(new CategoryFormModel());
+        //}
+
+        // CREATE (GET): Sorted A-Z
         public async Task<IActionResult> Create()
         {
             ViewBag.AllCategories = await _db.Categories
-                .OrderByDescending(c => c.CreatedOn).ToListAsync();
+                .OrderBy(c => c.CategoryName)
+                .ToListAsync();
             return View(new CategoryFormModel());
         }
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create(CategoryFormModel model)
+        //{
+        //    if (!ModelState.IsValid) return View(model);
+
+        //    var exists = await _db.Categories
+        //        .AnyAsync(c => c.CategoryName.ToLower() == model.CategoryName.ToLower());
+        //    if (exists)
+        //    {
+        //        ModelState.AddModelError("", "A category with this name already exists.");
+        //        return View(model);
+        //    }
+
+        //    _db.Categories.Add(new Category
+        //    {
+        //        CategoryName = model.CategoryName.Trim(),
+        //        Status = "Active",          // always Active by default
+        //        CreatedOn = DateTime.UtcNow
+        //    });
+        //    await _db.SaveChangesAsync();
+        //    TempData["Success"] = "Category created successfully!";
+        //    return RedirectToAction(nameof(Index));
+        //}
+
+
+        // CREATE (POST): Sorted A-Z
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CategoryFormModel model)
         {
-            if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid)
+            {
+                ViewBag.AllCategories = await _db.Categories.OrderBy(c => c.CategoryName).ToListAsync();
+                return View(model);
+            }
 
             var exists = await _db.Categories
                 .AnyAsync(c => c.CategoryName.ToLower() == model.CategoryName.ToLower());
+
             if (exists)
             {
                 ModelState.AddModelError("", "A category with this name already exists.");
+                ViewBag.AllCategories = await _db.Categories.OrderBy(c => c.CategoryName).ToListAsync();
                 return View(model);
             }
 
             _db.Categories.Add(new Category
             {
                 CategoryName = model.CategoryName.Trim(),
-                Status = "Active",          // always Active by default
+                Status = "Active",
                 CreatedOn = DateTime.UtcNow
             });
+
             await _db.SaveChangesAsync();
             TempData["Success"] = "Category created successfully!";
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Create));
         }
+
 
         public async Task<IActionResult> Edit(int id)
         {
@@ -443,13 +529,28 @@ namespace NewMagicPencil.Controllers
 
 
         // ── TOGGLE LIKE (AJAX) ─────────────────────────────────────────────
+        //[HttpPost]
+        //public async Task<IActionResult> ToggleLike(int id)
+        //{
+        //    var image = await _db.GalleryImages.FindAsync(id);
+        //    if (image == null)
+        //        return Json(new { success = false });
+
+        //    image.IsLiked = !image.IsLiked;
+        //    await _db.SaveChangesAsync();
+
+        //    return Json(new { success = true, isLiked = image.IsLiked });
+        //}
+
         [HttpPost]
         public async Task<IActionResult> ToggleLike(int id)
         {
+            // This 'id' is the primary key of the GalleryImages table
             var image = await _db.GalleryImages.FindAsync(id);
             if (image == null)
-                return Json(new { success = false });
+                return Json(new { success = false, message = "Image not found." });
 
+            // Toggle the status
             image.IsLiked = !image.IsLiked;
             await _db.SaveChangesAsync();
 

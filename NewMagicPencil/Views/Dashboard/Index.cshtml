@@ -6,18 +6,17 @@
     <div class="card shadow-sm border-0">
         <div class="card-body p-4">
 
-            <h4 class="mb-4">&#10024; Hello, @ViewBag.UserEmail! &#128075;</h4>
+            <h4 class="mb-4">✨ Hello, @ViewBag.UserEmail! 👋</h4>
             <hr />
 
             <div class="row g-4 mt-1">
 
-                <!-- Blogs Card -->
                 <div class="col-md-4">
                     <div class="card border-0 shadow-sm h-100 text-center p-4">
-                        <div style="font-size:2.5rem;">&#128221;</div>
+                        <div style="font-size:2.5rem;">📝</div>
                         <h5 class="mt-2 fw-bold">Blogs</h5>
                         <h2 class="fw-bold text-primary">@ViewBag.BlogCount</h2>
-                        <p class="text-muted">Total Blogs</p>
+                        <p class="text-muted">Total Published</p>
                         <a asp-controller="Blog" asp-action="Index"
                            class="btn btn-primary w-100 mt-auto">
                             Manage Blogs
@@ -25,32 +24,30 @@
                     </div>
                 </div>
 
-                <!-- Portfolio Card -->
                 <div class="col-md-4">
                     <div class="card border-0 shadow-sm h-100 text-center p-4">
-                        <div style="font-size:2.5rem;">&#128188;</div>
+                        <div style="font-size:2.5rem;">💼</div>
                         <h5 class="mt-2 fw-bold">Portfolio</h5>
-                        <h2 class="fw-bold text-primary">@ViewBag.CategoryCount</h2>
-                        <p class="text-muted">Total Categories</p>
+                        <h2 class="fw-bold text-success">@ViewBag.CategoryCount</h2>
+                        <p class="text-muted">Active Categories</p>
                         <a asp-controller="Category" asp-action="Index"
-                           class="btn btn-primary w-100 mt-auto">
+                           class="btn btn-success w-100 mt-auto">
                             Manage Portfolio
                         </a>
                     </div>
                 </div>
 
-                <!-- Gallery Module Card -->
                 <div class="col-md-4">
                     <div class="card border-0 shadow-sm h-100 text-center p-4"
                          style="border-top: 4px solid #e84393 !important;">
-                        <div style="font-size:2.5rem;">&#10084;&#65039;</div>
-                        <h5 class="mt-2 fw-bold">Gallery Module</h5>
+                        <div style="font-size:2.5rem;">❤️</div>
+                        <h5 class="mt-2 fw-bold">Gallery</h5>
                         <h2 class="fw-bold" style="color:#e84393;">@ViewBag.GalleryCount</h2>
                         <p class="text-muted">Liked Images</p>
                         <a href="/GalleryModule"
                            class="btn w-100 mt-auto text-white"
                            style="background:#e84393;">
-                            View Gallery Module
+                            View Gallery
                         </a>
                     </div>
                 </div>

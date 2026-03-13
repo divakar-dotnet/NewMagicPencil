@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿@* <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -61,6 +61,141 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html> *@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Magic Pencil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            border-bottom: 2px solid #eee;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: #6c5ce7 !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #444 !important;
+            transition: color 0.2s;
+        }
+
+            .nav-link:hover {
+                color: #6c5ce7 !important;
+            }
+
+            .nav-link.active-link {
+                color: #6c5ce7 !important;
+                border-bottom: 2px solid #6c5ce7;
+            }
+
+        .btn-magic {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+        }
+
+            .btn-magic:hover {
+                background: #5b4cc4;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top mb-4">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Dashboard" asp-action="Index">
+                    ✨ Magic Pencil
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center gap-2">
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Dashboard" ? "active-link" : "")"
+                               asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Blog" ? "active-link" : "")"
+                               asp-controller="Blog" asp-action="Index">Blogs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Category" && ViewContext.RouteData.Values["Action"]?.ToString() != "Gallery" ? "active-link" : "")"
+                               asp-controller="Category" asp-action="Index">Portfolio</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Action"]?.ToString() == "SRList" ? "active-link" : "")"
+                               asp-controller="Category" asp-action="SRList">
+                                <i class="bi bi-collection-play"></i> SR Page
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "GalleryModule" ? "active-link" : "")"
+                               asp-controller="GalleryModule" asp-action="Index">
+                                <i class="bi bi-heart-fill text-danger"></i> Gallery
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Error" ? "active-link" : "")"
+                               asp-controller="Error" asp-action="Logs">
+                                <i class="bi bi-bug-fill text-warning"></i> Logs
+                            </a>
+                        </li>
+
+                        <li class="nav-item ms-lg-3">
+                            <a asp-controller="Account" asp-action="Logout" class="btn btn-outline-danger btn-sm px-3">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+
+    <div class="container">
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+                <i class="bi bi-check-circle-fill me-2"></i> @TempData["Success"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        }
+        @RenderBody()
+    </div>
+
+    <footer class="text-center text-muted py-4 mt-5">
+        <hr class="w-25 mx-auto" />
+        <small>© 2026 - Magic Pencil | Admin Panel</small>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
